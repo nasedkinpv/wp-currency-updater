@@ -1,0 +1,5 @@
+{
+    "require": {
+        "benmajor/exchange-rates-api": "^1.0"
+    }
+}

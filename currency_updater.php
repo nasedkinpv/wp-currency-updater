@@ -12,7 +12,7 @@ Plugin URI: https://github.com/nasedkinpv/wp_currency_updater
 Description: This plugin downloads the latest bid and ask rates from API https://api.exchangeratesapi.io/.
 Exchange rates API is a free service for current and historical foreign exchange rates
 published by the European Central Bank
-Version: 1.0.1
+Version: 1.0.2
 Author: Ben Nasedkin
 Author URI: http://nasedk.in/
 License: GNU General Public License v3.0
@@ -559,7 +559,7 @@ if (!class_exists('CURRENCY_UPDATER')) :
 				$redirect = $_POST['redirect'];
 				$redirect = wp_validate_redirect($redirect, home_url());
 			}
-			if ($_POST["action"] === 'update_prices' && $_POST["action"] === 'update_rates') {
+			if ($_POST["action"] === 'update_prices' || $_POST["action"] === 'update_rates') {
 				wp_redirect($redirect);
 			}
 		}

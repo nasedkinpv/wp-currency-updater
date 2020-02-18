@@ -557,7 +557,7 @@ if (!class_exists('CURRENCY_UPDATER')) :
 				$redirect = $_POST['redirect'];
 				$redirect = wp_validate_redirect($redirect, home_url());
 			}
-			if ($_POST["action"] === 'update_prices') {
+			if ($_POST["action"] === 'update_prices' && $_POST["action"] === 'update_rates') {
 				wp_redirect($redirect);
 			}
 		}

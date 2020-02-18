@@ -159,12 +159,7 @@ if (!class_exists('CURRENCY_UPDATER')) :
 			};
 			$load_data();
 			$save_data();
-			$redirect = "admin.php?page=" . CURRENCY_UPDATER_PLUGIN_SLUG;
-			if (isset($_POST['redirect'])) {
-				$redirect = $_POST['redirect'];
-				$redirect = wp_validate_redirect($redirect, home_url());
-			}
-			wp_redirect($redirect);
+			$this->redirect();
 			die();
 		}
 		public function update_prices($post_ID = null)
@@ -261,18 +256,14 @@ if (!class_exists('CURRENCY_UPDATER')) :
 				if (get_post_type($post_ID) !== $post_type) return null;
 				$update_fields($post_ID);
 			}
-			$redirect = "admin.php?page=" . CURRENCY_UPDATER_PLUGIN_SLUG;
-			if (isset($_POST['redirect'])) {
-				$redirect = $_POST['redirect'];
-				$redirect = wp_validate_redirect($redirect, home_url());
-			}
-			wp_redirect($redirect);
+			$this->redirect();
 		}
 		public function init()
 		{
 			$init_action = apply_filters('currency_updater_init_action', 'init');
 			// add_action($init_action, array($this, 'update_rates'));
 		}
+
 
 		/**
 		 * Returns the class name and version.
@@ -557,6 +548,18 @@ if (!class_exists('CURRENCY_UPDATER')) :
 		private function run()
 		{
 			// var_dump($this->get_posts());
+		}
+
+		public function redirect()
+		{
+			$redirect = "admin.php?page=" . CURRENCY_UPDATER_PLUGIN_SLUG;
+			if (isset($_POST['redirect'])) {
+				$redirect = $_POST['redirect'];
+				$redirect = wp_validate_redirect($redirect, home_url());
+			}
+			if ($_POST["action"] === 'update_prices') {
+				wp_redirect($redirect);
+			}
 		}
 	}
 

@@ -19,6 +19,8 @@ License: GNU General Public License v3.0
 License URI: https://github.com/nasedkinpv/wp_currency_updater/blob/master/LICENSE
 Text Domain: currency-updater
 Domain Path: /lang
+GitHub Plugin URI: nasedkinpv/wp-currency-updater
+GitHub Plugin URI: https://github.com/nasedkinpv/wp-currency-updater
 */
 // deny direct access
 if (!function_exists('add_action')) {
